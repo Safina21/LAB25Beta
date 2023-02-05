@@ -1,0 +1,48 @@
+<ul class="text-info bg-light">
+    <h2>Book Cart</h2>
+    <li routerLink="/home">
+        Home
+    </li>
+  </ul>
+  <h5>Here the "Home" Component Works Successfully!!!!!!!</h5>
+ 
+  <div class = "row my-3">
+    <div class = "col-12">
+        <button class="btn btn-sm btn-primary" (click)="getallbooks()">Get all Books</button>
+    </div>
+  </div>
+  <div class = "row my-3">
+    <div class = "col-7">
+        <table class="table table-bordered table-hover mx-5 ">
+            <thead>
+                <tr>
+                    <th>BOOK ID</th>
+                    <th>Cover Image</th>
+                    <th>TITLE</th>
+                    <th>AUTHOR</th>
+                    <th>CATEGORY</th>
+                    <th>PRICE</th>
+                    <th>ACTION</th>
+                </tr>
+            </thead> 
+            <tbody *ngIf="bookList?.length === 0">
+                <tr>
+                    <td colspan="6">There is no Book to display</td>
+                </tr>
+            </tbody>       
+            <tbody *ngIf="bookList?.length > 0">
+                <tr *ngFor="let book of bookList" >
+                    <td>{{book.bookId}}</td>
+                    <td>{{book.coverFileName}}</td>
+                    <td>{{book.title}}</td>
+                    <td>{{book.author}}</td>
+                    <td>{{book.category}}</td>
+                    <td>{{book.price }}</td> 
+                    <td>
+                         <a href= "/bookdetails/{{book.bookId}}" (click)="viewBooks(book.bookId)">View Details</a>
+                    </td> 
+                </tr>
+            </tbody>
+        </table>
+    </div>
+  </div>

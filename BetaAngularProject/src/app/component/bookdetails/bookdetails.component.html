@@ -1,0 +1,45 @@
+
+<div class="book-details">
+  <h2>Book Details</h2>
+  <div class="row">
+    <div class="col-sm-3">
+      <img class="bookcover" src="https://bookcart.azurewebsites.net/Upload/{{bookData.coverFileName}}"
+        alt="{{bookData.title}}">
+    </div>
+    <div class="col-sm-5">
+      <div class="details">
+        <b>Title:</b> {{bookData.title}} <br>
+        <hr>
+        <b>Author:</b> {{bookData.author}} <br>
+        <hr>
+        <b>Category:</b> {{bookData.category}} <br>
+        <hr>
+        <b>Price:</b> {{bookData.price}} <br>
+        <hr>
+        <button class="btn btn-primary" (click)="addtocart()">
+          <fa-icon [icon]="cart"></fa-icon>Add to cart</button>
+        <button class="btn btn-danger mx-5" (click)="delwishlist()">Remove from wishlist</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="book-details1">
+  <h2>Similar Books</h2>
+  <div class="row">
+    <div class="card" *ngFor="let books of similarBooks">
+      <img class="bookimg" src="https://bookcart.azurewebsites.net/Upload/{{books.coverFileName}}"
+        alt="{{books.title}}">
+      <div class="card-body">
+        <a href="/bookdetails/{{books.bookId}}" (click)="books.title"><b>{{books.title}}</b></a><br>
+        {{books.price | currency}}
+        <br>
+        <button class="btn btn-primary" (click)="addtocart()">
+          <fa-icon [icon]="cart"></fa-icon>Add to cart</button>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
